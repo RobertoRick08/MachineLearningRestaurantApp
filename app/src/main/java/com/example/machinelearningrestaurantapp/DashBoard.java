@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class DashBoard extends AppCompatActivity {
-
+        Bundle bundle = new Bundle();
         BottomNavigationView baraDeNavigare;
         FragmentMeniuAcasa fragmentMeniuAcasa = new FragmentMeniuAcasa();
         FragmentRecomandari fragmentRecomandari = new FragmentRecomandari();
@@ -35,18 +35,20 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.itemAcasa:{
+                    case R.id.itemAcasa:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentMeniuAcasa).commit();
+                        return true;
 
-                            getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentMeniuAcasa).commit();
-                            return true;
-                    }
                     case R.id.itemProfil:
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentProfilUtilizator).commit();
                         return true;
+
                     case R.id.itemRecomandari:
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentRecomandari).commit();
                         return true;
+
                     case R.id.itemCart:
+
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentCosCumparaturi).commit();
                         return true;
                 }

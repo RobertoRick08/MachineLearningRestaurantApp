@@ -1,10 +1,25 @@
 package com.example.machinelearningrestaurantapp;
 
-public class Produs {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Produs implements Serializable {
     String denumire;
     float pret;
     String gramaj;
     String imagineURL;
+
+    @Override
+    public String toString() {
+        return "Produs{" +
+                "denumire='" + denumire + '\'' +
+                ", pret=" + pret +
+                ", gramaj='" + gramaj + '\'' +
+                ", imagineURL='" + imagineURL + '\'' +
+                '}';
+    }
 
     public Produs() {
 

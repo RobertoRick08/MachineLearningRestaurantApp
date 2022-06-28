@@ -108,16 +108,13 @@
             </LinearLayout>
 
             <Button
-
+                android:backgroundTint="@color/grey"
                 android:id="@+id/btnAdaugaLaComanda"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:text="Adauga in cos"
-                android:textAlignment="textStart"
                 android:textSize="8dp"
-                android:background="@color/grey"
                 >
 
             </Button>

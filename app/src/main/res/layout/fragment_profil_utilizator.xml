@@ -6,68 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".fragmente.FragmentProfilUtilizator">
 
+    <LinearLayout
 
-    <EditText
-        android:text="Roberto Rick"
-        android:layout_below="@+id/imageProfilUtilizator"
-        android:id="@+id/etProfilNume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Aici va aparea numele utilizatorului"
-        android:layout_centerInParent="true"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </EditText>
+        <ImageView
+            android:id="@+id/imageProfilUtilizator"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@drawable/user"></ImageView>
 
-    <EditText
-        android:text="21 de ani"
-        android:layout_below="@+id/etProfilAdresa"
-        android:layout_centerInParent="true"
-        android:id="@+id/etProfilVarsta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Aici va aparea varsta"
-       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nume:"></TextView>
 
-    <EditText
-        android:text="Adresa de livrare"
-        android:layout_below="@+id/etProfilNume"
-        android:layout_centerInParent="true"
-        android:id="@+id/etProfilAdresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Aici va aparea adresa de livrare"
-        >
+            <EditText
 
-    </EditText>
+                android:id="@+id/etProfilNume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="Aici va aparea numele utilizatorului"
+                android:text="Roberto Rick">
 
-    <EditText
-        android:text="mail@yahoopunctcom"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/etProfilVarsta"
-        android:id="@+id/etProfilEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Aici va aparea emailul"
-        >
+            </EditText>
+        </LinearLayout>
 
-    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Varsta:"></TextView>
+        <EditText
+            android:id="@+id/etProfilVarsta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="Aici va aparea varsta"
+            android:text="21 de ani">
 
-        android:id="@+id/imageProfilUtilizator"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/common_google_signin_btn_icon_disabled" />
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresa:"></TextView>
+        <EditText
+            android:id="@+id/etProfilAdresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="Aici va aparea adresa de livrare"
+            android:text="Adresa de livrare">
 
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"></TextView>
+        <EditText
+            android:id="@+id/etProfilEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="Aici va aparea emailul"
+            android:text="mail@yahoopunctcom">
+
+        </EditText>
+    </LinearLayout>
+
+    </LinearLayout>
 </RelativeLayout>

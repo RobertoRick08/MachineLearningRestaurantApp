@@ -1,13 +1,17 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Visibility;
 
 import com.bumptech.glide.Glide;
 import com.example.machinelearningrestaurantapp.Produs;
@@ -30,11 +35,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class FragmentMeniuAcasa extends Fragment {
     private View produseView;
     private RecyclerView listaProduse;
     private DatabaseReference produseRef;
-
+    public static FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
 
     public FragmentMeniuAcasa() {
 
@@ -54,9 +63,14 @@ public class FragmentMeniuAcasa extends Fragment {
     }
 
     @Override
+    public void onOptionsMenuClosed(@NonNull Menu menu) {
+        super.onOptionsMenuClosed(menu);
+
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
-
         FirebaseRecyclerOptions optiuni =
                 new FirebaseRecyclerOptions.Builder<Produs>()
                 .setQuery(produseRef, Produs.class)
@@ -107,6 +121,17 @@ public class FragmentMeniuAcasa extends Fragment {
         TextView denumire, pret, gramaj;
         ImageView imagineURL;
         Button btnAdaugaLaComanda;
+        public Bundle bundle = new Bundle();
+        public List<Produs> produseAdaugateCos = new ArrayList<>();
+
+        public List<Produs> getProduseAdaugateCos() {
+            return produseAdaugateCos;
+        }
+
+        public void setProduseAdaugateCos(List<Produs> produseAdaugateCos) {
+            this.produseAdaugateCos = produseAdaugateCos;
+        }
+
         public ProduseHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -115,19 +140,46 @@ public class FragmentMeniuAcasa extends Fragment {
             gramaj = itemView.findViewById(R.id.gramajProdus);
             imagineURL = itemView.findViewById(R.id.imagineProdus);
             btnAdaugaLaComanda = itemView.findViewById(R.id.btnAdaugaLaComanda);
-            btnAdaugaLaComanda.setOnClickListener(new View.OnClickListener() {
-
-                @SuppressLint("ResourceAsColor")
+            btnAdaugaLaComanda.setTag(1);
+            btnAdaugaLaComanda.setOnClickListener( new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick (View v) {
+                    final int status = (Integer) v.getTag();
+                    if(status == 1) {
+                        String denumireProdus = denumire.getText().toString();
+                        String pretProdus = pret.getText().toString();
+                        String gramajProdus = gramaj.getText().toString();
+                        ImageView imagine = imagineURL;
 
-                        btnAdaugaLaComanda.setText("Adaugat");
-                        btnAdaugaLaComanda.setBackgroundColor(R.color.green);
+                        Produs produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
+                        produseAdaugateCos.add(produs);
 
+                        Toast.makeText(itemView.getContext(), denumireProdus , Toast.LENGTH_SHORT).show();
 
+                        btnAdaugaLaComanda.setText("Adaugat!");
+                        btnAdaugaLaComanda.setBackgroundColor(Color.GREEN);
+                        v.setTag(0);
+
+                    } else {
+                        String denumireProdus = denumire.getText().toString();
+                        String pretProdus = pret.getText().toString();
+                        String gramajProdus = gramaj.getText().toString();
+                        ImageView imagine = imagineURL;
+                        Produs produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
+                        produseAdaugateCos.remove(produs);
+                        btnAdaugaLaComanda.setText("Adauga in cos");
+                        btnAdaugaLaComanda.setBackgroundColor(Color.GRAY);
+                        v.setTag(1);
+                    }
                 }
             });
+            bundle.putSerializable("cos de cumaraturi", (Serializable) produseAdaugateCos);
+
+
         }
+
+
     }
+
 
 }
