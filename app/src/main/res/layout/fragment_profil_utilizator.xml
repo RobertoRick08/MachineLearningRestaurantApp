@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmente.FragmentProfilUtilizator">
+
+
+    <EditText
+        android:text="Roberto Rick"
+        android:layout_below="@+id/imageProfilUtilizator"
+        android:id="@+id/etProfilNume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Aici va aparea numele utilizatorului"
+        android:layout_centerInParent="true"
+        >
+
+    </EditText>
+
+    <EditText
+        android:text="21 de ani"
+        android:layout_below="@+id/etProfilAdresa"
+        android:layout_centerInParent="true"
+        android:id="@+id/etProfilVarsta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Aici va aparea varsta"
+       >
+
+    </EditText>
+
+    <EditText
+        android:text="Pula mea adresa"
+        android:layout_below="@+id/etProfilNume"
+        android:layout_centerInParent="true"
+        android:id="@+id/etProfilAdresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Aici va aparea adresa de livrare"
+        >
+
+    </EditText>
+
+    <EditText
+        android:text="sugipula@yahoopunctcom"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/etProfilVarsta"
+        android:id="@+id/etProfilEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Aici va aparea emailul"
+        >
+
+    </EditText>
+
+    <ImageView
+
+        android:id="@+id/imageProfilUtilizator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/common_google_signin_btn_icon_disabled" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</RelativeLayout>

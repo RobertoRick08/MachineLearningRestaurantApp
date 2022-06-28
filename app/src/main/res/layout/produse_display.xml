@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+
+        >
+
+        <ImageView
+            android:cropToPadding="true"
+            android:id="@+id/imagineProdus"
+            android:layout_width="150dp"
+            android:layout_height="150dp"></ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:textAlignment="center">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Denumire:"
+                    android:textAlignment="center"
+                    android:textSize="15dp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/denumireProdus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Denumire produs"
+                    android:textAlignment="center"
+                    android:textSize="12dp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:textAlignment="center">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pret:"
+                    android:textAlignment="center"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:id="@+id/pretProdus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Pret produs"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:textAlignment="center">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gramaj:"
+                    android:textAlignment="center"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:id="@+id/gramajProdus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Gramaj Produs"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp">
+
+                </TextView>
+            </LinearLayout>
+
+            <Button
+
+                android:id="@+id/btnAdaugaLaComanda"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:text="Adauga in cos"
+                android:textAlignment="textStart"
+                android:textSize="8dp"
+                android:background="@color/grey"
+                >
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

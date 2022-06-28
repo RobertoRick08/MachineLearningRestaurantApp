@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/itemAcasa"
+    android:title="Acasa"
+    android:icon="@drawable/icon_acasa">
+</item>
+    <item
+        android:id="@+id/itemProfil"
+        android:icon="@drawable/icon_profil"
+        android:title="Profil">
+
+    </item>
+    <item
+        android:id="@+id/itemRecomandari"
+        android:icon="@drawable/icon_oferte"
+        android:title="Recomandari">
+
+    </item>
+    <item
+        android:id="@+id/itemCart"
+        android:icon="@drawable/cart"
+        android:title="Cumparaturi">
+
+    </item>
+</menu>

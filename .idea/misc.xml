@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_dash_board.xml" value="0.2" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_cos_cumparaturi.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_meniu_acasa.xml" value="0.22" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_oferte.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_user.xml" value="0.2" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_utilizator.xml" value="0.2" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_recomandari.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/produse_display.xml" value="0.33" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/menu/top_toolbar_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2115" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2115" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
