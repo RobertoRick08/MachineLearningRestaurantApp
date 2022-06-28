@@ -32,7 +32,7 @@
     </EditText>
 
     <EditText
-        android:text="Pula mea adresa"
+        android:text="Adresa de livrare"
         android:layout_below="@+id/etProfilNume"
         android:layout_centerInParent="true"
         android:id="@+id/etProfilAdresa"
@@ -44,7 +44,7 @@
     </EditText>
 
     <EditText
-        android:text="sugipula@yahoopunctcom"
+        android:text="mail@yahoopunctcom"
         android:layout_centerInParent="true"
         android:layout_below="@+id/etProfilVarsta"
         android:id="@+id/etProfilEmail"
