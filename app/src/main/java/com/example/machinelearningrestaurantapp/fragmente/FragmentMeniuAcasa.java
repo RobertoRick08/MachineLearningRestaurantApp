@@ -17,16 +17,21 @@ import android.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.Visibility;
 
 import com.bumptech.glide.Glide;
+import com.example.machinelearningrestaurantapp.DashBoard;
 import com.example.machinelearningrestaurantapp.Produs;
 import com.example.machinelearningrestaurantapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +48,7 @@ public class FragmentMeniuAcasa extends Fragment {
     private View produseView;
     private RecyclerView listaProduse;
     private DatabaseReference produseRef;
+
     public static FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
 
     public FragmentMeniuAcasa() {
@@ -58,13 +64,18 @@ public class FragmentMeniuAcasa extends Fragment {
         listaProduse.setLayoutManager(new LinearLayoutManager(getContext()));
 
         produseRef = FirebaseDatabase.getInstance().getReference().child("Produse");
-
         return produseView;
     }
 
     @Override
     public void onOptionsMenuClosed(@NonNull Menu menu) {
         super.onOptionsMenuClosed(menu);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
 
     }
 
@@ -121,16 +132,14 @@ public class FragmentMeniuAcasa extends Fragment {
         TextView denumire, pret, gramaj;
         ImageView imagineURL;
         Button btnAdaugaLaComanda;
-        public Bundle bundle = new Bundle();
-        public List<Produs> produseAdaugateCos = new ArrayList<>();
+
+        private static Produs produs;
+        private static ArrayList<Produs> produseAdaugateCos = new ArrayList<>();
 
         public List<Produs> getProduseAdaugateCos() {
             return produseAdaugateCos;
         }
 
-        public void setProduseAdaugateCos(List<Produs> produseAdaugateCos) {
-            this.produseAdaugateCos = produseAdaugateCos;
-        }
 
         public ProduseHolder(@NonNull View itemView) {
             super(itemView);
@@ -151,29 +160,31 @@ public class FragmentMeniuAcasa extends Fragment {
                         String gramajProdus = gramaj.getText().toString();
                         ImageView imagine = imagineURL;
 
-                        Produs produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
+                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
                         produseAdaugateCos.add(produs);
+                        DashBoard.bundle.putParcelableArrayList("cos",produseAdaugateCos);
 
-                        Toast.makeText(itemView.getContext(), denumireProdus , Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(itemView.getContext(),denumireProdus,Toast.LENGTH_SHORT).show();
+
 
                         btnAdaugaLaComanda.setText("Adaugat!");
                         btnAdaugaLaComanda.setBackgroundColor(Color.GREEN);
+
                         v.setTag(0);
 
                     } else {
-                        String denumireProdus = denumire.getText().toString();
-                        String pretProdus = pret.getText().toString();
-                        String gramajProdus = gramaj.getText().toString();
-                        ImageView imagine = imagineURL;
-                        Produs produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
+
                         produseAdaugateCos.remove(produs);
                         btnAdaugaLaComanda.setText("Adauga in cos");
                         btnAdaugaLaComanda.setBackgroundColor(Color.GRAY);
                         v.setTag(1);
+
+
                     }
                 }
             });
-            bundle.putSerializable("cos de cumaraturi", (Serializable) produseAdaugateCos);
+
 
 
         }

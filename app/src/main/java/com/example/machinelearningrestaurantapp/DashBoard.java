@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class DashBoard extends AppCompatActivity {
-        Bundle bundle = new Bundle();
+        public static Bundle bundle = new Bundle();
         BottomNavigationView baraDeNavigare;
         FragmentMeniuAcasa fragmentMeniuAcasa = new FragmentMeniuAcasa();
         FragmentRecomandari fragmentRecomandari = new FragmentRecomandari();
@@ -48,7 +48,7 @@ public class DashBoard extends AppCompatActivity {
                         return true;
 
                     case R.id.itemCart:
-
+                        fragmentCosCumparaturi.setArguments(bundle);
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente, fragmentCosCumparaturi).commit();
                         return true;
                 }
