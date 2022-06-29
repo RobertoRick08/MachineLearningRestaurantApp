@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmente.FragmentCosCumparaturi">
+<LinearLayout
+    android:id="@+id/linearNimic"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<ImageView
+    android:src="@drawable/cart"
+    android:layout_gravity="center"
+    android:layout_width="80dp"
+    android:layout_height="80dp"></ImageView>
+    <TextView
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista de produse">
 
-    <!-- TODO: Update blank fragment layout -->
+</TextView>
+
+</LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaCumparaturi"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="300dp"
+        android:layout_below="@+id/linearNimic">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFinalizeazaComanda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="Finalizeaza comanda"
+        android:textSize="12dp"
+        android:layout_below="@+id/listaCumparaturi">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+</RelativeLayout>
