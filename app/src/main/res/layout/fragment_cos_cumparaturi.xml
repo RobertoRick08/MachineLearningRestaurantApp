@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmente.FragmentCosCumparaturi">
+    tools:context=".fragmente.FragmentCosCumparaturi"
+    >
 <LinearLayout
     android:id="@+id/linearNimic"
     android:orientation="vertical"
@@ -16,6 +17,7 @@
     android:layout_width="80dp"
     android:layout_height="80dp"></ImageView>
     <TextView
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:textSize="20dp"
         android:layout_width="wrap_content"
@@ -30,19 +32,25 @@
         android:id="@+id/listaCumparaturi"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_below="@+id/linearNimic">
+        android:layout_below="@+id/linearNimic"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/border">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:textStyle="bold"
         android:id="@+id/btnFinalizeazaComanda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/listaCumparaturi"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/border"
         android:text="Finalizeaza comanda"
-        android:textSize="12dp"
-        android:layout_below="@+id/listaCumparaturi">
+        android:backgroundTint="@color/lightGreen"
+        android:textSize="12dp">
 
     </androidx.appcompat.widget.AppCompatButton>
 

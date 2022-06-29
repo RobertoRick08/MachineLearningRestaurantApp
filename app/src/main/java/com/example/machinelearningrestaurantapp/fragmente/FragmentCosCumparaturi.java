@@ -42,23 +42,30 @@ public class FragmentCosCumparaturi extends Fragment {
         btnFinalizareCoamnda = cosView.findViewById(R.id.btnFinalizeazaComanda);
 
         Bundle bundle = getArguments();
-        ArrayList<Produs> cos = bundle.getParcelableArrayList("cos");
+        assert bundle != null;
+        if(!bundle.isEmpty()) {
+            cosProduse = bundle.getParcelableArrayList("cos");
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        CosAdapter adapter = new CosAdapter(cos,getContext());
-        recyclerView.setAdapter(adapter);
-if(!cos.isEmpty()) {
-    int suma = 0;
-    for (Produs p : cos) {
-        suma += p.getPret();
-    }
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            CosAdapter adapter = new CosAdapter(cosProduse, getContext());
+            recyclerView.setAdapter(adapter);
 
-    Log.d("Mesaj:", String.valueOf(suma));
-    btnFinalizareCoamnda.setText("Finalizeaza comanda \n" + suma + " lei");
-}
-        // Inflate the layout for this fragment
+            int suma = 0;
+            for (Produs p : cosProduse) {
+                suma += p.getPret();
+            }
+            Log.d("Mesaj:", String.valueOf(suma));
+            Log.d("Numar produse:", String.valueOf(cosProduse.size()));
+            btnFinalizareCoamnda.setText("Finalizeaza comanda \n" + suma + " lei");
+
+        }
+
         return cosView;
+
+
+        // Inflate the layout for this fragment
+
     }
 
     @Override
@@ -67,5 +74,8 @@ if(!cos.isEmpty()) {
 
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 }

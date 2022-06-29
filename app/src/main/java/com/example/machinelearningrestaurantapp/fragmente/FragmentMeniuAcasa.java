@@ -49,7 +49,7 @@ public class FragmentMeniuAcasa extends Fragment {
     private View produseView;
     private RecyclerView listaProduse;
     private DatabaseReference produseRef;
-
+    private ImageView imagineBackground;
     public static FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
 
     public FragmentMeniuAcasa() {
@@ -83,6 +83,7 @@ public class FragmentMeniuAcasa extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
         FirebaseRecyclerOptions optiuni =
                 new FirebaseRecyclerOptions.Builder<Produs>()
                 .setQuery(produseRef, Produs.class)
@@ -105,7 +106,8 @@ public class FragmentMeniuAcasa extends Fragment {
                                     holder.denumire.setText(textProdus);
                                     holder.pret.setText(valoareProdus + " lei");
                                     holder.gramaj.setText(greutateProdus);
-                                Glide.with(getContext()).load(imagineProdus).into(holder.imagineURL);
+                                    holder.imagineURL = imagineProdus;
+                                Glide.with(getContext()).load(imagineProdus).into(holder.imagineProd);
 
                             }
 
@@ -131,9 +133,9 @@ public class FragmentMeniuAcasa extends Fragment {
 
     public static class ProduseHolder extends  RecyclerView.ViewHolder{
         TextView denumire, pret, gramaj;
-        ImageView imagineURL;
+        ImageView imagineProd;
         Button btnAdaugaLaComanda;
-
+        String imagineURL;
         private static Produs produs;
         private static ArrayList<Produs> produseAdaugateCos = new ArrayList<>();
 
@@ -148,7 +150,7 @@ public class FragmentMeniuAcasa extends Fragment {
             denumire = itemView.findViewById(R.id.denumireProdus);
             pret = itemView.findViewById(R.id.pretProdus);
             gramaj = itemView.findViewById(R.id.gramajProdus);
-            imagineURL = itemView.findViewById(R.id.imagineProdus);
+            imagineProd = itemView.findViewById(R.id.imagineProdus);
             btnAdaugaLaComanda = itemView.findViewById(R.id.btnAdaugaLaComanda);
             btnAdaugaLaComanda.setTag(1);
             btnAdaugaLaComanda.setOnClickListener( new View.OnClickListener() {
@@ -159,9 +161,9 @@ public class FragmentMeniuAcasa extends Fragment {
                         String denumireProdus = denumire.getText().toString();
                         String pretProdus = pret.getText().toString();
                         String gramajProdus = gramaj.getText().toString();
-                        ImageView imagine = imagineURL;
+                        ImageView imagine = imagineProd;
 
-                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagine.toString());
+                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagineURL);
                         produseAdaugateCos.add(produs);
                         DashBoard.bundle.putParcelableArrayList("cos",produseAdaugateCos);
 

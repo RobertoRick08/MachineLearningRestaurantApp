@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +36,7 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView denumire, pret;
         ImageView imagineProdusCos;
-
-
+        String imagineCosURL;
         public ViewHolder(View view) {
             super(view);
             denumire = view.findViewById(R.id.denumireProdusCos);
@@ -62,7 +64,7 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
 
         // Get element from your dataset at this position and replace the
         viewHolder.denumire.setText(produseCos.get(position).getDenumire());
-        viewHolder.pret.setText("aici sa rezolv cu intu ala");
+        viewHolder.pret.setText((int) produseCos.get(position).getPret()+"");
         Glide.with(context).load(produseCos.get(position).getImagineURL()).into(viewHolder.imagineProdusCos);
 
     }
