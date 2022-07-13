@@ -24,6 +24,12 @@ public class DashBoard extends AppCompatActivity {
         FragmentProfilUtilizator fragmentProfilUtilizator = new FragmentProfilUtilizator();
         FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
         ImageView imagineBackground;
+
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

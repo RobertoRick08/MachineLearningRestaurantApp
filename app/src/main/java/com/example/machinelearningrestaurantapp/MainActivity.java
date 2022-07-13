@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView register,forgot;
     private Button login;
     private FirebaseAuth mAuth;
-    private EditText editTextEmail, editTextPassword;
+    private TextInputEditText editTextEmail, editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         forgot = (TextView) findViewById(R.id.tvForgotPassword);
         forgot.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 
     @Override
@@ -69,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btLogin:{
                 String email = editTextEmail.getText().toString();
                 String password= editTextPassword.getText().toString();
-
+                Log.d("Login : ", email);
+                Log.d("Login : ", password);
                 if(email.isEmpty()){
                     editTextEmail.setError("Introduceti mailul!");
                     editTextEmail.requestFocus();

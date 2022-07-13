@@ -1,8 +1,11 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.DialogFragment;
@@ -12,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.machinelearningrestaurantapp.CosAdapter;
+import com.example.machinelearningrestaurantapp.DashBoard;
 import com.example.machinelearningrestaurantapp.PlasareComandaActivity;
 import com.example.machinelearningrestaurantapp.Produs;
 import com.example.machinelearningrestaurantapp.R;
@@ -25,11 +31,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentCosCumparaturi extends Fragment {
-    private int suma = 0;
+    public static int suma = 0;
     private View cosView;
     private ArrayList<Produs> cosProduse = new ArrayList<>();
     private RecyclerView recyclerView;
-    private AppCompatButton btnFinalizareCoamnda;
+    public static AppCompatButton btnFinalizareCoamnda;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,10 +84,39 @@ public class FragmentCosCumparaturi extends Fragment {
         btnFinalizareCoamnda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent = new Intent(getContext(), PlasareComandaActivity.class);
-              intent.putParcelableArrayListExtra("cosProduse",cosProduse);
-              intent.putExtra("totalComanda", suma);
-              startActivity(intent);
+                if( suma != 0 ) {
+                    Intent intent = new Intent(getContext(), PlasareComandaActivity.class);
+                    intent.putParcelableArrayListExtra("cosProduse", cosProduse);
+                    intent.putExtra("totalComanda", suma);
+                    startActivity(intent);
+                }
+                else{
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                    builder1.setMessage("Upss...nu exista produse in cos!\nDoriti sa reveniti in meniul principal?");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Da",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent it = new Intent(getContext(), DashBoard.class);
+                                    it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(it);
+                                    dialog.cancel();
+                                }
+                            });
+                    builder1.setNegativeButton(
+                            "Nu",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+
             }
         });
     }
@@ -89,6 +124,6 @@ public class FragmentCosCumparaturi extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        cosProduse.clear();
+
     }
 }

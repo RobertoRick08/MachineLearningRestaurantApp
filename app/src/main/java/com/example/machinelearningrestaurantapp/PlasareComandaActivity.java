@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 
 public class PlasareComandaActivity extends AppCompatActivity {
     private ArrayList<Produs> cosProduse = new ArrayList<>();
-    private EditText adresaLivrare , numarTelefon;
+    private TextInputEditText adresaLivrare , numarTelefon;
     private AppCompatButton btnPlasareComanda;
     private ImageView checkImage;
     private AnimatedVectorDrawable animatie;
@@ -43,6 +46,57 @@ public class PlasareComandaActivity extends AppCompatActivity {
         btnPlasareComanda = findViewById(R.id.btnPlaseazaComanda);
         checkImage = findViewById(R.id.imgCheck);
 
+        adresaLivrare.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length() == 0 ){
+                    numarTelefon.setError("Ai depasit 10 numere!");
+                    btnPlasareComanda.setEnabled(false);
+                }
+                else if (s.length() < 9){
+                    numarTelefon.setError(null);
+                    btnPlasareComanda.setEnabled(false);
+                }
+                else {
+                    btnPlasareComanda.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        numarTelefon.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length() > 9){
+                    numarTelefon.setError("Ai depasit 10 numere!");
+                    btnPlasareComanda.setEnabled(false);
+                }
+                else if (s.length() < 9){
+                    numarTelefon.setError(null);
+                    btnPlasareComanda.setEnabled(false);
+                }
+                else {
+                    btnPlasareComanda.setEnabled(true);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         btnPlasareComanda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +113,9 @@ public class PlasareComandaActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(getApplicationContext(),"Comanda a fost inregistrata cu succes!",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),DashBoard.class));
+                            Intent intent1 = new Intent(getApplicationContext(),DashBoard.class);
+                            intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent1);
 
                         }
                         else {
