@@ -1,14 +1,14 @@
 package com.example.machinelearningrestaurantapp;
 
 public class User {
-    private  String nume, mail, varsta;
+    public  String nume, mail, numarTelefon;
 
     public User(){
     }
 
-    public User(String nume, String mail, String varsta) {
+    public User(String nume, String mail, String numarTelefon) {
         this.nume = nume;
         this.mail = mail;
-        this.varsta = varsta;
+        this.numarTelefon = numarTelefon;
     }
 }

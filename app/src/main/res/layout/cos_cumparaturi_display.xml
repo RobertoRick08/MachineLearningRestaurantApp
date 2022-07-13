@@ -29,21 +29,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Denumire: "
+                    android:textColor="@color/white"
                     android:textSize="15dp">
 
                 </TextView>
 
                 <TextView
-                    android:textColor="@color/white"
                     android:id="@+id/denumireProdusCos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pizza"
+                    android:textColor="@color/white"
                     android:textSize="15dp">
 
                 </TextView>
@@ -55,27 +55,54 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Pret: "
+                    android:textColor="@color/white"
                     android:textSize="15dp">
 
                 </TextView>
 
                 <TextView
-                    android:textColor="@color/white"
                     android:id="@+id/pretProdusCos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="35.55 lei"
+                    android:textColor="@color/white"
                     android:textSize="15dp">
 
                 </TextView>
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/btnAddProdus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/add_icon">
+
+        </Button>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="1">
+
+        </TextView>
+
+        <Button
+            android:background="@drawable/rmv_icon"
+            android:id="@+id/btnRmvProdus"
+            android:layout_gravity="center"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp">
+
+        </Button>
 
     </LinearLayout>
 

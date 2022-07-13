@@ -20,6 +20,7 @@ import com.example.machinelearningrestaurantapp.DashBoard;
 import com.example.machinelearningrestaurantapp.MainActivity;
 import com.example.machinelearningrestaurantapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -34,7 +35,7 @@ import java.net.URL;
 
 public class FragmentProfilUtilizator extends Fragment {
     private View fragmentView;
-    private EditText nume,mail,varsta;
+    private TextInputEditText nume,mail,varsta;
     DatabaseReference userRef;
     ImageView imagineUser;
     Button btnDelogare;
@@ -46,7 +47,7 @@ public class FragmentProfilUtilizator extends Fragment {
 
         nume = fragmentView.findViewById(R.id.etProfilNume);
         mail = fragmentView.findViewById(R.id.etProfilEmail);
-        varsta = fragmentView.findViewById(R.id.etProfilVarsta);
+        varsta = fragmentView.findViewById(R.id.etProfilNumar);
         imagineUser = fragmentView.findViewById(R.id.imageProfilUtilizator);
         btnDelogare = fragmentView.findViewById(R.id.btnDelogare);
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -76,7 +77,7 @@ public class FragmentProfilUtilizator extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 nume.setText(snapshot.child("nume").getValue().toString());
                 mail.setText(snapshot.child("mail").getValue().toString());
-                varsta.setText(snapshot.child("varsta").getValue().toString());
+                varsta.setText(snapshot.child("numarTelefon").getValue().toString());
 
             }
 

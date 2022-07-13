@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:orientation="vertical">
 
     <TextView
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:fontFamily="sans-serif-black"
         android:textSize="50dp"
@@ -24,69 +27,120 @@
 
     </TextView>
 
-    <EditText
-        android:id="@+id/etRegisterNume"
-        android:layout_width="380dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout1"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full name"
-        android:textAlignment="center"
+        android:hint="Nume"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="Required"
+        app:helperTextTextColor="@color/green"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236">
+        app:layout_constraintVertical_bias="0.362"
+        app:startIconDrawable="@drawable/icon_profil">
 
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegisterNume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="229dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etRegisterEmail"
-        android:layout_width="380dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        app:layout_constraintBaseline_toBottomOf="@id/textInputLayout1"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email adress"
-        android:textAlignment="center"
+        android:hint="Email address"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="Required"
+        app:helperTextTextColor="@color/green"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415">
+        app:layout_constraintVertical_bias="0.362"
+        app:startIconDrawable="@drawable/icon_profil">
 
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="229dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:textAlignment="center"
-        android:id="@+id/etRegsiterAge"
-        android:layout_width="380dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Age"
+        android:hint="Numar Telefon"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="Required"
+        app:helperTextTextColor="@color/green"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32">
+        app:layout_constraintVertical_bias="0.362"
+        app:startIconDrawable="@drawable/icon_profil">
 
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNumarTelefon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="229dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etRegisterParola"
-        android:layout_width="380dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout5"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textAlignment="center"
+        android:hint="Parola"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="Required"
+        app:helperTextTextColor="@color/green"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362"
+        app:startIconDrawable="@drawable/icon_profil">
 
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegisterParola"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="229dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
         android:id="@+id/btnRegister"
-        android:text="REGISTER"
+        android:text="INREGISTRARE"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -98,9 +152,9 @@
         app:layout_constraintVertical_bias="0.626" />
 
     <ProgressBar
+        android:layout_gravity="center"
         android:id="@+id/progressBarRegister"
         tools:ignore="MissingConstraints"
-        android:layout_centerInParent= "true"
         style="?android:progressBarStyleLarge"
         android:visibility="gone"
         android:layout_width="wrap_content"
@@ -111,4 +165,4 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </ProgressBar>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

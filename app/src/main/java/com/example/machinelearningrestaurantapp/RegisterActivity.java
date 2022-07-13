@@ -15,13 +15,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editTextFullName, editTextAge, editTextPassword, editTextEmail;
+    private TextInputEditText editTextFullName, editTextNumarTelefon, editTextPassword, editTextEmail;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private Button register;
@@ -34,10 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        editTextFullName = (EditText) findViewById(R.id.etRegisterNume);
-        editTextEmail = (EditText) findViewById(R.id.etRegisterEmail);
-        editTextPassword = (EditText) findViewById(R.id.etRegisterParola);
-        editTextAge = (EditText) findViewById(R.id.etRegsiterAge);
+        editTextFullName = (TextInputEditText) findViewById(R.id.etRegisterNume);
+        editTextEmail = (TextInputEditText) findViewById(R.id.etRegisterEmail);
+        editTextPassword = (TextInputEditText) findViewById(R.id.etRegisterParola);
+        editTextNumarTelefon = (TextInputEditText) findViewById(R.id.etNumarTelefon);
 
         progressBar = findViewById(R.id.progressBarRegister);
 
@@ -56,21 +57,21 @@ public class RegisterActivity extends AppCompatActivity {
         String nume = editTextFullName.getText().toString();
         String password = editTextPassword.getText().toString();
         String email = editTextEmail.getText().toString();
-        String age = editTextAge.getText().toString();
+        String numarTelefon = editTextNumarTelefon.getText().toString();
 
         if (nume.isEmpty()) {
             editTextFullName.setError("Introduceti numele!");
             editTextFullName.requestFocus();
             return;
         }
-        if (age.isEmpty()) {
-            editTextAge.setError("Introduceti varsta!");
-            editTextAge.requestFocus();
+        if (numarTelefon.isEmpty()) {
+            editTextNumarTelefon.setError("Introduceti varsta!");
+            editTextNumarTelefon.requestFocus();
             return;
         }
-        if (!TextUtils.isDigitsOnly(age)) {
-            editTextAge.setError("Ati introdus din greseala si caractere!");
-            editTextAge.requestFocus();
+        if (!TextUtils.isDigitsOnly(numarTelefon)) {
+            editTextNumarTelefon.setError("Ati introdus din greseala si caractere!");
+            editTextNumarTelefon.requestFocus();
             return;
         }
         if (password.isEmpty()) {
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(nume,email,age);
+                            User user = new User(nume,email,numarTelefon);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
