@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/avd_anim.xml" value="0.115" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/border.xml" value="0.167" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/cart.xml" value="0.165" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/cartalb.xml" value="0.1205" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/checkcomanda.xml" value="0.1" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1205" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/trash.xml" value="0.1" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/user.xml" value="0.1365" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/vd_vector.xml" value="0.139" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_dash_board.xml" value="0.2" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_plasare_comanda.xml" value="0.22" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/cos_cumparaturi_display.xml" value="0.5" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_cos_cumparaturi.xml" value="0.1" />
@@ -17,7 +25,9 @@
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_user.xml" value="0.2" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_utilizator.xml" value="0.22" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_recomandari.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/informatii_comanda.xml" value="0.44646924829157175" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/produse_display.xml" value="0.33" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/recomandate_display.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/menu/top_toolbar_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2115" />

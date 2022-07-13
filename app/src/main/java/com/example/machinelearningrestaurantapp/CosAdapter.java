@@ -64,7 +64,7 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
 
         // Get element from your dataset at this position and replace the
         viewHolder.denumire.setText(produseCos.get(position).getDenumire());
-        viewHolder.pret.setText((int) produseCos.get(position).getPret()+"");
+        viewHolder.pret.setText((int) produseCos.get(position).getPret()+" lei");
         Glide.with(context).load(produseCos.get(position).getImagineURL()).into(viewHolder.imagineProdusCos);
 
     }

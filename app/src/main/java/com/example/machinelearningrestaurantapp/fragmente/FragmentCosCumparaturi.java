@@ -1,9 +1,11 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.machinelearningrestaurantapp.CosAdapter;
+import com.example.machinelearningrestaurantapp.PlasareComandaActivity;
 import com.example.machinelearningrestaurantapp.Produs;
 import com.example.machinelearningrestaurantapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentCosCumparaturi extends Fragment {
-
+    private int suma = 0;
     private View cosView;
     private ArrayList<Produs> cosProduse = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -51,7 +54,7 @@ public class FragmentCosCumparaturi extends Fragment {
             CosAdapter adapter = new CosAdapter(cosProduse, getContext());
             recyclerView.setAdapter(adapter);
 
-            int suma = 0;
+
             for (Produs p : cosProduse) {
                 suma += p.getPret();
             }
@@ -72,10 +75,20 @@ public class FragmentCosCumparaturi extends Fragment {
     public void onStart() {
         super.onStart();
 
+        btnFinalizareCoamnda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Intent intent = new Intent(getContext(), PlasareComandaActivity.class);
+              intent.putParcelableArrayListExtra("cosProduse",cosProduse);
+              intent.putExtra("totalComanda", suma);
+              startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        cosProduse.clear();
     }
 }

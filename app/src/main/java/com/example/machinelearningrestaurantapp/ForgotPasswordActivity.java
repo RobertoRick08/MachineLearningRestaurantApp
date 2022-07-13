@@ -30,19 +30,20 @@ public class ForgotPasswordActivity extends AppCompatActivity {
        btnReset.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-
-
                auth.sendPasswordResetEmail(etEmail.getText().toString())
                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
                                if (task.isSuccessful()) {
-                                   Toast.makeText(getApplicationContext(),"Email de resetare parola trimis!",Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(getApplicationContext(),
+                                           "Email de resetare parola trimis!",
+                                           Toast.LENGTH_SHORT).show();
                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                    finish();
                                }
                                else {
-                                   Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(getApplicationContext(),task.getException().
+                                           getMessage(),Toast.LENGTH_SHORT).show();
                                }
                            }
                        });

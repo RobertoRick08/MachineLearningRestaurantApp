@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <TextView
         android:id="@+id/bannerMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="JunkFOOD"
+        android:text="FunkFOOD"
 
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

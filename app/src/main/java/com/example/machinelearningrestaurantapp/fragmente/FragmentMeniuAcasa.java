@@ -49,8 +49,6 @@ public class FragmentMeniuAcasa extends Fragment {
     private View produseView;
     private RecyclerView listaProduse;
     private DatabaseReference produseRef;
-    private ImageView imagineBackground;
-    public static FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
 
     public FragmentMeniuAcasa() {
 
@@ -107,7 +105,7 @@ public class FragmentMeniuAcasa extends Fragment {
                                     holder.pret.setText(valoareProdus + " lei");
                                     holder.gramaj.setText(greutateProdus);
                                     holder.imagineURL = imagineProdus;
-                                Glide.with(getContext()).load(imagineProdus).into(holder.imagineProd);
+                                    Glide.with(getContext()).load(imagineProdus).into(holder.imagineProd);
 
                             }
 

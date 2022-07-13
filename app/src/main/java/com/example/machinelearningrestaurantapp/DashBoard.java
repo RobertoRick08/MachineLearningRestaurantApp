@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentCosCumparaturi;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentMeniuAcasa;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentProfilUtilizator;
@@ -21,12 +23,11 @@ public class DashBoard extends AppCompatActivity {
         FragmentRecomandari fragmentRecomandari = new FragmentRecomandari();
         FragmentProfilUtilizator fragmentProfilUtilizator = new FragmentProfilUtilizator();
         FragmentCosCumparaturi fragmentCosCumparaturi = new FragmentCosCumparaturi();
+        ImageView imagineBackground;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
-
-
         baraDeNavigare = findViewById(R.id.baraDeNavigare);
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragmente,fragmentMeniuAcasa).commit();
 

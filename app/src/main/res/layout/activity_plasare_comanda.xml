@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlasareComandaActivity">
+
+    <ImageView
+        android:id="@+id/imgCheck"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/imggg"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/avd_anim"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imggg"
+        android:layout_marginBottom="30dp"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/layoutAAA"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/checkcomanda">
+
+   </ImageView>
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/layoutAAA"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:paddingRight="3dp"
+                android:text="Adresa de livrare:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+            <EditText
+                android:textSize="15dp"
+                android:hint="Introduceti adresa de email"
+                android:id="@+id/etAdresaLivrare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </EditText>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Numar de telefon:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+            <EditText
+                android:hint="Introduceti numar de telefon"
+                android:textSize="15dp"
+                android:id="@+id/etNumarTelefon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </EditText>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPlaseazaComanda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutAAA"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/lightGreen"
+        android:text="Plaseaza comanda">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+</RelativeLayout>
