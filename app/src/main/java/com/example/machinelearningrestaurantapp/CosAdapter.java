@@ -1,6 +1,7 @@
 package com.example.machinelearningrestaurantapp;
 
 import static com.example.machinelearningrestaurantapp.fragmente.FragmentCosCumparaturi.btnFinalizareCoamnda;
+import static com.example.machinelearningrestaurantapp.fragmente.FragmentCosCumparaturi.produsFrecventa;
 import static com.example.machinelearningrestaurantapp.fragmente.FragmentCosCumparaturi.suma;
 
 import android.content.Context;
@@ -24,11 +25,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
 
-    private static ArrayList<Produs> produseCos;
+    private ArrayList<Produs> produseCos;
 
     private Context context;
     private final LayoutInflater mLayoutInflater;
@@ -40,15 +42,48 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView denumire, pret;
+        TextView denumire, pret ,cantitate;
         ImageView imagineProdusCos;
         String imagineCosURL;
         ImageView btnRemoveProdus;
+        ImageView addProdus,rmvProdus;
+
         public ViewHolder(View view) {
             super(view);
             denumire = view.findViewById(R.id.denumireProdusCos);
             pret = view.findViewById(R.id.pretProdusCos);
             imagineProdusCos = view.findViewById(R.id.imagineProdusCos);
+            cantitate = view.findViewById(R.id.cantitate);
+            final int[] cant = {Integer.parseInt(cantitate.getText().toString())};
+            addProdus = view.findViewById(R.id.btnAddProdus);
+            addProdus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cant[0]++;
+                    cantitate.setText(cant[0]+"");
+                    produsFrecventa.put(produseCos.get(getAbsoluteAdapterPosition()).getDenumire(),cant[0]);
+                    updateAt(getAbsoluteAdapterPosition(),true);
+                }
+            });
+            rmvProdus = view.findViewById(R.id.btnRmvProdus);
+            rmvProdus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   if(cant[0] != 0){
+                    cant[0]--;
+                    produsFrecventa.put(produseCos.get(getAbsoluteAdapterPosition()).getDenumire(),cant[0]);
+                    cantitate.setText(cant[0]+"");
+                    updateAt(getAbsoluteAdapterPosition(),false);
+                   }
+                    if(cant[0] == 0) {
+
+                        produseCos.remove(getAbsoluteAdapterPosition());
+                        notifyItemRemoved(getAbsoluteAdapterPosition());
+                        notifyItemRangeChanged(getAbsoluteAdapterPosition(), produseCos.size());
+                        produsFrecventa.remove(produseCos.get(getAbsoluteAdapterPosition()).getDenumire());
+                    }
+                }
+            });
             btnRemoveProdus = view.findViewById(R.id.btnRemoveProdusCos);
             btnRemoveProdus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,11 +94,22 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
             });
         }
         private void removeAt(int position) {
-            suma = (int) (suma - produseCos.get(position).getPret());
+            suma = (int) (suma - produseCos.get(position).getPret() * Integer.parseInt(cantitate.getText().toString()));
+            produsFrecventa.remove(produseCos.get(position).getDenumire());
             produseCos.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, produseCos.size());
+
             btnFinalizareCoamnda.setText("Finalizeaza comanda \n" + suma + " lei");
+        }
+        private void updateAt(int position, boolean flag) {
+            if(flag){
+                 suma = (int) (suma + produseCos.get(position).getPret());
+                 btnFinalizareCoamnda.setText("Finalizeaza comanda \n" + suma + " lei");
+            }else{
+                suma = (int) (suma - produseCos.get(position).getPret());
+                btnFinalizareCoamnda.setText("Finalizeaza comanda \n" + suma + " lei");
+            }
         }
     }
 

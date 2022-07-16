@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/avd_anim.xml" value="0.115" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/border.xml" value="0.167" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/border_lay.xml" value="0.1535" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/cart.xml" value="0.165" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/cartalb.xml" value="0.1205" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/drawable/checkcomanda.xml" value="0.1" />
@@ -19,8 +20,8 @@
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_plasare_comanda.xml" value="0.22" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/activity_register.xml" value="0.22" />
-        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/cos_cumparaturi_display.xml" value="0.25" />
-        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_cos_cumparaturi.xml" value="0.1" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/cos_cumparaturi_display.xml" value="0.5" />
+        <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_cos_cumparaturi.xml" value="0.33" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_meniu_acasa.xml" value="0.22" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_oferte.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_user.xml" value="0.2" />

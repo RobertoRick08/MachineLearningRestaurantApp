@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class FragmentRecomandari extends Fragment {
     private View produseView;
     private RecyclerView listaProduse;
     private DatabaseReference produseRef;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class FragmentRecomandari extends Fragment {
         listaProduse = (RecyclerView) produseView.findViewById(R.id.listaRecomandari);
         listaProduse.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        produseRef = FirebaseDatabase.getInstance().getReference().child("Recomandate");
+        produseRef = FirebaseDatabase.getInstance().getReference().child("Produse");
         return produseView;
     }
 
@@ -61,24 +63,30 @@ public class FragmentRecomandari extends Fragment {
 
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
+        Query query = FirebaseDatabase.getInstance().getReference().child("Produse").orderByChild("frecventa").limitToFirst(5);
+        FirebaseRecyclerOptions<Produs> options = new FirebaseRecyclerOptions.Builder<Produs>()
+                .setQuery(query, Produs.class)
+                .build();
 
-        FirebaseRecyclerOptions optiuni =
-                new FirebaseRecyclerOptions.Builder<Produs>()
+        FirebaseRecyclerOptions optiuni = new FirebaseRecyclerOptions.Builder<Produs>()
                         .setQuery(produseRef, Produs.class)
                         .build();
 
         FirebaseRecyclerAdapter<Produs, RecomandateHolder> adapter =
-                new FirebaseRecyclerAdapter<Produs, RecomandateHolder>(optiuni) {
+                new FirebaseRecyclerAdapter<Produs, RecomandateHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull RecomandateHolder holder, int position, @NonNull Produs model) {
                         String idProduse = getRef(position).getKey();
                         produseRef.child(idProduse).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                                if(getActivity() == null){
+                                    return;
+                                }
                                 String textProdus = snapshot.child("denumire").getValue().toString();
                                 String imagineProdus = snapshot.child("imagineURL").getValue().toString();
                                 String valoareProdus = snapshot.child("pret").getValue().toString();
@@ -88,7 +96,7 @@ public class FragmentRecomandari extends Fragment {
                                 holder.pret.setText(valoareProdus + " lei");
                                 holder.gramaj.setText(greutateProdus);
                                 holder.imagineURL = imagineProdus;
-                                Glide.with(getContext()).load(imagineProdus).into(holder.imagineProd);
+                                Glide.with(getActivity()).load(imagineProdus).into(holder.imagineProd);
 
                             }
 
@@ -144,7 +152,7 @@ public class FragmentRecomandari extends Fragment {
                         String gramajProdus = gramaj.getText().toString();
                         ImageView imagine = imagineProd;
 
-                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagineURL);
+                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagineURL,0);
                         produseAdaugateCos.add(produs);
                         DashBoard.bundle.putParcelableArrayList("cos",produseAdaugateCos);
 

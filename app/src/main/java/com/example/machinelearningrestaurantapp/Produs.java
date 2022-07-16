@@ -10,54 +10,7 @@ public class Produs implements Parcelable {
     float pret;
     String gramaj;
     String imagineURL;
-
-    protected Produs(Parcel in) {
-        denumire = in.readString();
-        pret = in.readFloat();
-        gramaj = in.readString();
-        imagineURL = in.readString();
-    }
-
-    public static final Creator<Produs> CREATOR = new Creator<Produs>() {
-        @Override
-        public Produs createFromParcel(Parcel in) {
-            return new Produs(in);
-        }
-
-        @Override
-        public Produs[] newArray(int size) {
-            return new Produs[size];
-        }
-    };
-
-    @Override
-    public String toString() {
-        return "Produs{" +
-                "denumire='" + denumire + '\'' +
-                ", pret=" + pret +
-                ", gramaj='" + gramaj + '\'' +
-                ", imagineURL='" + imagineURL + '\'' +
-                '}';
-    }
-
-    public Produs() {
-
-    }
-
-    public Produs(String denumire, float pret, String gramaj, String imagineURL) {
-        this.denumire = denumire;
-        this.pret = pret;
-        this.gramaj = gramaj;
-        this.imagineURL = imagineURL;
-    }
-
-    public String getGramaj() {
-        return gramaj;
-    }
-
-    public void setGramaj(String gramaj) {
-        this.gramaj = gramaj;
-    }
+    int frecventa;
 
     public String getDenumire() {
         return denumire;
@@ -75,6 +28,14 @@ public class Produs implements Parcelable {
         this.pret = pret;
     }
 
+    public String getGramaj() {
+        return gramaj;
+    }
+
+    public void setGramaj(String gramaj) {
+        this.gramaj = gramaj;
+    }
+
     public String getImagineURL() {
         return imagineURL;
     }
@@ -82,6 +43,43 @@ public class Produs implements Parcelable {
     public void setImagineURL(String imagineURL) {
         this.imagineURL = imagineURL;
     }
+
+    public int getFrecventa() {
+        return frecventa;
+    }
+
+    public void setFrecventa(int frecventa) {
+        this.frecventa = frecventa;
+    }
+
+    public Produs(String denumire, float pret, String gramaj, String imagineURL, int frecventa) {
+        this.denumire = denumire;
+        this.pret = pret;
+        this.gramaj = gramaj;
+        this.imagineURL = imagineURL;
+        this.frecventa = frecventa;
+    }
+    public Produs(){};
+
+    protected Produs(Parcel in) {
+        denumire = in.readString();
+        pret = in.readFloat();
+        gramaj = in.readString();
+        imagineURL = in.readString();
+        frecventa = in.readInt();
+    }
+
+    public static final Creator<Produs> CREATOR = new Creator<Produs>() {
+        @Override
+        public Produs createFromParcel(Parcel in) {
+            return new Produs(in);
+        }
+
+        @Override
+        public Produs[] newArray(int size) {
+            return new Produs[size];
+        }
+    };
 
     @Override
     public int describeContents() {
@@ -94,5 +92,6 @@ public class Produs implements Parcelable {
         dest.writeFloat(pret);
         dest.writeString(gramaj);
         dest.writeString(imagineURL);
+        dest.writeInt(frecventa);
     }
 }

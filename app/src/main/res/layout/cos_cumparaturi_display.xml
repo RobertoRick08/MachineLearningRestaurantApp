@@ -76,16 +76,18 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
+        <ImageView
             android:layout_gravity="center"
-            android:id="@+id/btnAddProdus"
+            android:id="@+id/btnRmvProdus"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/add_icon">
+            android:background="@drawable/rmvalb">
 
-        </Button>
+        </ImageView>
 
         <TextView
+            android:textColor="@color/white"
+            android:id="@+id/cantitate"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,15 +96,14 @@
 
         </TextView>
 
-        <Button
-            android:background="@drawable/rmv_icon"
-            android:id="@+id/btnRmvProdus"
+        <ImageView
+            android:background="@drawable/addalb"
+            android:id="@+id/btnAddProdus"
             android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="5dp">
-
-        </Button>
+        </ImageView>
 
     </LinearLayout>
 

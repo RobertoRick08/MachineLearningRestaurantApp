@@ -95,7 +95,9 @@ public class FragmentMeniuAcasa extends Fragment {
                         produseRef.child(idProduse).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                                    if(getActivity() == null){
+                                        return;
+                                    }
                                     String textProdus = snapshot.child("denumire").getValue().toString();
                                     String imagineProdus = snapshot.child("imagineURL").getValue().toString();
                                     String valoareProdus = snapshot.child("pret").getValue().toString();
@@ -105,7 +107,7 @@ public class FragmentMeniuAcasa extends Fragment {
                                     holder.pret.setText(valoareProdus + " lei");
                                     holder.gramaj.setText(greutateProdus);
                                     holder.imagineURL = imagineProdus;
-                                    Glide.with(getContext()).load(imagineProdus).into(holder.imagineProd);
+                                    Glide.with(getActivity()).load(imagineProdus).into(holder.imagineProd);
 
                             }
 
@@ -161,7 +163,7 @@ public class FragmentMeniuAcasa extends Fragment {
                         String gramajProdus = gramaj.getText().toString();
                         ImageView imagine = imagineProd;
 
-                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagineURL);
+                        produs = new Produs(denumireProdus,Float.parseFloat(pretProdus.split(" ")[0]),gramajProdus,imagineURL,1);
                         produseAdaugateCos.add(produs);
                         DashBoard.bundle.putParcelableArrayList("cos",produseAdaugateCos);
 

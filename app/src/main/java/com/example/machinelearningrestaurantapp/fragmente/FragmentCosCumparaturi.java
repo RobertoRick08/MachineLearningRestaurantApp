@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.machinelearningrestaurantapp.CosAdapter;
@@ -28,10 +29,14 @@ import com.example.machinelearningrestaurantapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FragmentCosCumparaturi extends Fragment {
     public static int suma = 0;
+    Button afiseazaMap;
+    public static HashMap<String,Integer> produsFrecventa = new HashMap<>();
     private View cosView;
     private ArrayList<Produs> cosProduse = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -41,6 +46,7 @@ public class FragmentCosCumparaturi extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,12 +55,18 @@ public class FragmentCosCumparaturi extends Fragment {
         cosView = inflater.inflate(R.layout.fragment_cos_cumparaturi,container,false);
         recyclerView = (RecyclerView) cosView.findViewById(R.id.listaCumparaturi);
         btnFinalizareCoamnda = cosView.findViewById(R.id.btnFinalizeazaComanda);
+        afiseazaMap = cosView.findViewById(R.id.afiseazaMap);
 
         Bundle bundle = getArguments();
         assert bundle != null;
         if(!bundle.isEmpty()) {
             cosProduse = bundle.getParcelableArrayList("cos");
-
+            for (Produs p : cosProduse){
+                produsFrecventa.put(p.getDenumire(),1);
+            }
+            for (String s : produsFrecventa.keySet()){
+                Log.d("Frecventa: ", s + " " + produsFrecventa.get(s).toString() +"\n");
+            }
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             recyclerView.setLayoutManager(linearLayoutManager);
             CosAdapter adapter = new CosAdapter(cosProduse, getContext());
@@ -80,7 +92,14 @@ public class FragmentCosCumparaturi extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        afiseazaMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (String s : produsFrecventa.keySet()){
+                    Log.d("Frecventa ", s + " " + produsFrecventa.get(s).toString() + "\n");
+                }
+            }
+        });
         btnFinalizareCoamnda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +107,7 @@ public class FragmentCosCumparaturi extends Fragment {
                     Intent intent = new Intent(getContext(), PlasareComandaActivity.class);
                     intent.putParcelableArrayListExtra("cosProduse", cosProduse);
                     intent.putExtra("totalComanda", suma);
+                    intent.putExtra("map",produsFrecventa);
                     startActivity(intent);
                 }
                 else{
@@ -124,6 +144,13 @@ public class FragmentCosCumparaturi extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        suma = 0;
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        cosProduse.clear();
+        produsFrecventa.clear();
     }
 }

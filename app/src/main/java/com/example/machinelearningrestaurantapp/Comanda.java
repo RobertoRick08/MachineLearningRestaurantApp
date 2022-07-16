@@ -2,9 +2,9 @@ package com.example.machinelearningrestaurantapp;
 
 public class Comanda {
 
-    private String adresaDeLivrare, numarTelefon;
-    private Float totalComanda;
-    private int numarProduse;
+    public String adresaDeLivrare, numarTelefon;
+    public Float totalComanda;
+    public int numarProduse;
 
     public Comanda(String adresaDeLivrare, String numarTelefon, Float totalComanda, int numarProduse) {
         this.adresaDeLivrare = adresaDeLivrare;
