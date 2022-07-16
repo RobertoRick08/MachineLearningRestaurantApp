@@ -1,14 +1,11 @@
 package com.example.machinelearningrestaurantapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentCosCumparaturi;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentMeniuAcasa;
 import com.example.machinelearningrestaurantapp.fragmente.FragmentProfilUtilizator;
