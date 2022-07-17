@@ -12,6 +12,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
 import com.example.machinelearningrestaurantapp.MainActivity
 import com.example.machinelearningrestaurantapp.R
 import com.google.android.material.textfield.TextInputEditText
@@ -19,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import java.io.IOException
 import java.util.*
 
@@ -35,6 +40,8 @@ class FragmentProfilUtilizator : Fragment() {
     private var filePath: Uri? = null
     private var firebaseStore: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
+    private val user = FirebaseAuth.getInstance().currentUser
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
@@ -60,16 +67,27 @@ class FragmentProfilUtilizator : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val user = FirebaseAuth.getInstance().currentUser
         userRef!!.child(user!!.uid).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 nume.setText(snapshot.child("nume").value.toString())
                 mail.setText(snapshot.child("mail").value.toString())
                 varsta.setText(snapshot.child("numarTelefon").value.toString())
+                context?.let {
+                    Glide.with(it)
+                            .load(snapshot.child("imageProfile").value.toString())
+                            .diskCacheStrategy(DiskCacheStrategy.DATA)
+                            .transform(CenterCrop())
+                            .circleCrop()
+                            .into(imagineUser)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun updateProfile(key: String, value: String){
+        userRef?.child(user!!.uid)?.child(key)?.setValue(value)
     }
 
     private fun launchGallery() {
@@ -85,14 +103,7 @@ class FragmentProfilUtilizator : Fragment() {
             if(data == null || data.data == null){
                 return
             }
-
             filePath = data.data
-            try {
-                val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, filePath)
-                imagineUser.setImageBitmap(bitmap)
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
             uploadImage()
         }
     }
@@ -101,7 +112,12 @@ class FragmentProfilUtilizator : Fragment() {
         if(filePath != null){
             val imageName = UUID.randomUUID().toString()
             val ref = storageReference?.child("profile/" + imageName)
-            val uploadTask = ref?.putFile(filePath!!)
+            val uploadTask = ref?.putFile(filePath!!)?.addOnSuccessListener {
+                ref.downloadUrl.addOnCompleteListener { task ->
+                    var url = task.result.toString()
+                    updateProfile("imageProfile",url)
+                }
+            }
 
         }else{
             Toast.makeText(activity, "Please Upload an Image", Toast.LENGTH_SHORT).show()
