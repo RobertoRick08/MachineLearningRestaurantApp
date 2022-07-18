@@ -3,8 +3,11 @@ package com.example.machinelearningrestaurantapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +43,27 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPassword = (TextInputEditText) findViewById(R.id.etRegisterParola);
         editTextNumarTelefon = (TextInputEditText) findViewById(R.id.etNumarTelefon);
 
+        editTextNumarTelefon.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 10) {
+                    editTextNumarTelefon.setError("Ai depasit 10 numere!");
+
+                } else if (s.length() < 10) {
+                    editTextNumarTelefon.setError("Numar gresit");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         progressBar = findViewById(R.id.progressBarRegister);
 
         register = findViewById(R.id.btnRegister);
@@ -58,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
         String email = editTextEmail.getText().toString();
         String numarTelefon = editTextNumarTelefon.getText().toString();
+
 
         if (nume.isEmpty()) {
             editTextFullName.setError("Introduceti numele!");
@@ -107,11 +132,12 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(RegisterActivity.this,"User has been register succesfully!",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this,"Contul a fost creat cu succes!",Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
+                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                     }
                                     else {
-                                        Toast.makeText(RegisterActivity.this, "Failed to register",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Inregistrare esuata",Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

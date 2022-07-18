@@ -7,8 +7,15 @@
     tools:context=".RegisterActivity"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:src="@drawable/machinelearningregister"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="70dp"></ImageView>
+
     <TextView
-        android:layout_marginTop="80dp"
+        android:textColor="#0000ff"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:fontFamily="sans-serif-black"
@@ -34,7 +41,7 @@
         android:layout_height="wrap_content"
         android:hint="Nume"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
+        app:counterMaxLength="30"
         app:helperText="Required"
         app:helperTextTextColor="@color/green"
         app:endIconMode="clear_text"
@@ -48,6 +55,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegisterNume"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="178dp"
@@ -62,7 +70,7 @@
         android:layout_height="wrap_content"
         android:hint="Email address"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
+        app:counterMaxLength="40"
         app:helperText="Required"
         app:helperTextTextColor="@color/green"
         app:endIconMode="clear_text"
@@ -72,10 +80,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362"
-        app:startIconDrawable="@drawable/icon_profil">
+        app:startIconDrawable="@drawable/mailblue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegisterEmail"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="178dp"
@@ -99,11 +108,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362"
-        app:startIconDrawable="@drawable/icon_profil">
+        app:startIconDrawable="@drawable/phoneblue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNumarTelefon"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="178dp"
             tools:layout_editor_absoluteY="229dp" />
@@ -114,19 +124,19 @@
         style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Parola"
+        android:hint="Password"
+        app:endIconMode="password_toggle"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:helperText="Required"
         app:helperTextTextColor="@color/green"
-        app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362"
-        app:startIconDrawable="@drawable/icon_profil">
+        app:startIconDrawable="@drawable/lockblue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegisterParola"
@@ -137,10 +147,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:backgroundTint="@color/black"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:id="@+id/btnRegister"
         android:text="INREGISTRARE"
+        android:textStyle="bold"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"

@@ -5,22 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+
     >
+
+    <ImageView
+        android:src="@drawable/machinelearningmeniu"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+    </ImageView>
 
     <TextView
         android:id="@+id/bannerMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="FunkFOOD"
+        android:text="Funk Food"
+        android:textColor="#006699"
 
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146">
+        app:layout_constraintVertical_bias="0.158">
 
     </TextView>
 
@@ -31,7 +45,7 @@
         android:layout_height="wrap_content"
         android:hint="Email address"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
+        app:counterMaxLength="40"
         app:helperText="Required"
         app:helperTextTextColor="@color/green"
         app:endIconMode="clear_text"
@@ -45,6 +59,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="178dp"
@@ -72,6 +87,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etParola"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="178dp"
@@ -79,13 +95,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
         android:id="@+id/btLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="LOGIN"
+        android:text="Autentificare"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
@@ -111,8 +128,9 @@
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:text="Forgot password?!"
+        android:layout_marginTop="51dp"
+        android:text="Ai uitat parola?"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -121,10 +139,12 @@
         app:layout_constraintVertical_bias="0.031" />
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="Inregistrare"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintLeft_toLeftOf="parent"

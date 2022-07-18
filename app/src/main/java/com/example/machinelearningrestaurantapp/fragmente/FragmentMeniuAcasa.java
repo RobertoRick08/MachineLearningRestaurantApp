@@ -1,6 +1,7 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -167,7 +168,7 @@ public class FragmentMeniuAcasa extends Fragment {
 
                         produseAdaugateCos.remove(produs);
                         btnAdaugaLaComanda.setText("Adauga in cos");
-                        btnAdaugaLaComanda.setBackgroundColor(Color.GRAY);
+                        btnAdaugaLaComanda.setBackgroundColor(Color.argb(1,0, 102, 153));
                         v.setTag(1);
 
 

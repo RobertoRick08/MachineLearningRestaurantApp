@@ -144,7 +144,7 @@ public class FragmentCosCumparaturi extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        suma = 0;
+
     }
 
     @Override
@@ -152,5 +152,6 @@ public class FragmentCosCumparaturi extends Fragment {
         super.onDetach();
         cosProduse.clear();
         produsFrecventa.clear();
+        suma = 0;
     }
 }

@@ -72,10 +72,6 @@ public class FragmentRecomandari extends Fragment {
                 .setQuery(query, Produs.class)
                 .build();
 
-        FirebaseRecyclerOptions optiuni = new FirebaseRecyclerOptions.Builder<Produs>()
-                        .setQuery(produseRef, Produs.class)
-                        .build();
-
         FirebaseRecyclerAdapter<Produs, RecomandateHolder> adapter =
                 new FirebaseRecyclerAdapter<Produs, RecomandateHolder>(options) {
                     @Override

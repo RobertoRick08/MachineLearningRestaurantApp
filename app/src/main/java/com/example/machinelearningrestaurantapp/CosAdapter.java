@@ -76,11 +76,11 @@ public class CosAdapter extends RecyclerView.Adapter<CosAdapter.ViewHolder> {
                     updateAt(getAbsoluteAdapterPosition(),false);
                    }
                     if(cant[0] == 0) {
-
+                        produsFrecventa.remove(produseCos.get(getAbsoluteAdapterPosition()).getDenumire());
                         produseCos.remove(getAbsoluteAdapterPosition());
                         notifyItemRemoved(getAbsoluteAdapterPosition());
                         notifyItemRangeChanged(getAbsoluteAdapterPosition(), produseCos.size());
-                        produsFrecventa.remove(produseCos.get(getAbsoluteAdapterPosition()).getDenumire());
+
                     }
                 }
             });
