@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         if (numarTelefon.isEmpty()) {
-            editTextNumarTelefon.setError("Introduceti varsta!");
+            editTextNumarTelefon.setError("Introduceti numarul de telefon!");
             editTextNumarTelefon.requestFocus();
             return;
         }

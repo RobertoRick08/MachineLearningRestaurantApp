@@ -11,6 +11,7 @@ import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +30,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class PlasareComandaActivity extends AppCompatActivity {
@@ -39,7 +42,7 @@ public class PlasareComandaActivity extends AppCompatActivity {
     private HashMap<String, Integer> frecventaMap = new HashMap<>();
     private ImageView checkImage;
     private AnimatedVectorDrawable animatie;
-    private float totalComanda;
+    private double totalComanda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class PlasareComandaActivity extends AppCompatActivity {
         numarTelefon = findViewById(R.id.etNumarTelefon);
         btnPlasareComanda = findViewById(R.id.btnPlaseazaComanda);
         checkImage = findViewById(R.id.imgCheck);
+
         frecventaMap = (HashMap<String, Integer>) intent.getSerializableExtra("map");
         adresaLivrare.addTextChangedListener(new TextWatcher() {
             @Override
@@ -107,6 +111,21 @@ public class PlasareComandaActivity extends AppCompatActivity {
         btnPlasareComanda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!TextUtils.isDigitsOnly(numarTelefon.getText().toString())) {
+                    numarTelefon.setError("Ati introdus din greseala si caractere!");
+                    numarTelefon.requestFocus();
+                    return;
+                }
+                if (adresaLivrare.getText().toString().isEmpty()) {
+                    adresaLivrare.setError("Introduceti adresa de livrare");
+                    adresaLivrare.requestFocus();
+                    return;
+                }
+                if (adresaLivrare.getText().toString().length() < 10) {
+                    adresaLivrare.setError("Adresa trebuie sa contina minim 10 caractere");
+                    adresaLivrare.requestFocus();
+                    return;
+                }
                 inregistreazaRecomandate(frecventaMap);
                 inregistreazaComanda();
             }
@@ -141,8 +160,10 @@ public class PlasareComandaActivity extends AppCompatActivity {
         String adresa = adresaLivrare.getText().toString();
         String numar = numarTelefon.getText().toString();
         Log.d("Clickkk", adresa + " " + numar + " " + cosProduse.size());
-
-        Comanda comanda = new Comanda(adresa, numar, totalComanda, cosProduse.size());
+        Date date = new Date();
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        String stringdate = dt.format(date);
+        Comanda comanda = new Comanda(adresa, numar, totalComanda, cosProduse.size(), stringdate);
         FirebaseDatabase.getInstance().getReference("Comenzi")
                 .push().setValue(comanda).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

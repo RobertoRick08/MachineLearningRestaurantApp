@@ -128,7 +128,6 @@ public class FragmentCosCumparaturi extends Fragment {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
                 }
-
             }
         });
     }

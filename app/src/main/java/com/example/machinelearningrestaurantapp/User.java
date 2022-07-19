@@ -2,7 +2,7 @@ package com.example.machinelearningrestaurantapp;
 
 public class User {
     public  String nume, mail, numarTelefon;
-
+    public boolean isAdmin;
     public User(){
     }
 
@@ -10,5 +10,6 @@ public class User {
         this.nume = nume;
         this.mail = mail;
         this.numarTelefon = numarTelefon;
+        isAdmin = false;
     }
 }
