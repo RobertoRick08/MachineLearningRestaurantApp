@@ -1,5 +1,6 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -16,8 +17,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.machinelearningrestaurantapp.Comanda;
+import com.example.machinelearningrestaurantapp.MainActivity;
 import com.example.machinelearningrestaurantapp.R;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -72,13 +75,20 @@ DatabaseReference userRef, ordersRef;
         barChart = fragmentView.findViewById(R.id.barchart);
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Comenzi");
-
+        btnDeconectare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
         init();
 
         return fragmentView;
     }
 
     private void init(){
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -155,5 +165,9 @@ DatabaseReference userRef, ordersRef;
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(true);
+        Description description = new Description();
+        description.setText("");
+        description.setTextSize(20f);
+        barChart.setDescription(description);
     }
 }
