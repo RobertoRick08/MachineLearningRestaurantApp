@@ -39,7 +39,7 @@ private ImageView imagineAdmin;
         numarAdmin = container.findViewById((R.id.etAdminProfilNumar));
         emailAdmin = container.findViewById(R.id.etAdminProfilEmail);
         btnDeconectare = container.findViewById((R.id.btnAdminDelogare));
-        btnAfisareStatistici = container.findViewById(R.id.btnAfisareStatistici);
+        btnAfisareStatistici = container.findViewById(R.id.btnAdminStatistici);
 
 
 

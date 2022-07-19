@@ -1,114 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmente.FragmentProfilAdmin">
+    android:orientation="horizontal"
+    tools:context=".fragmente.FragmentProfilUtilizator"
+    >
+    <ImageView
 
+        android:id="@+id/imageAdminProfilUtilizator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:src="@drawable/userfinal">
+
+    </ImageView>
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:background="@drawable/border"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
 
-        <ImageView
 
-            android:id="@+id/imageAdminProfilUtilizator"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/userfinal">
 
-        </ImageView>
+        <com.google.android.material.textfield.TextInputLayout
 
-        <LinearLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="Nume utilizator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.362"
+            app:startIconDrawable="@drawable/icon_profil">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAdminProfilNume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:hint="Nume utilizator"
-
-                android:startIconDrawable="@drawable/icon_profil">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAdminProfilNume"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="178dp"
-                    tools:layout_editor_absoluteY="229dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="229dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Numar telefon"
+            android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.362"
+            app:startIconDrawable="@drawable/icon_profil">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAdminProfilNumar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
-                android:hint="Numar telefon"
-                android:startIconDrawable="@drawable/icon_profil">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAdminProfilNumar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="178dp"
-                    tools:layout_editor_absoluteY="229dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="229dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.362"
+            app:startIconDrawable="@drawable/icon_profil">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAdminProfilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
-                android:hint="Email"
-                android:startIconDrawable="@drawable/icon_profil">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAdminProfilEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="178dp"
-                    tools:layout_editor_absoluteY="229dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="229dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Button
-                android:id="@+id/btnAdminDelogare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/red"
-                android:text="Deconectare"
-                android:textColor="@color/black"
-                android:textStyle="bold">
+        <Button
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/red"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/btnAdminDelogare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Deconectare">
 
-            </Button>
+        </Button>
+        <Button
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#0000ff"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/btnAdminStatistici"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Vezi statisticile">
 
-            <Button
-                android:id="@+id/btnAfisareStatistici"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#1144ff"
-                android:text="Statistici vanzari"
-                android:textColor="#00ffff"
-                android:textStyle="bold">
-
-            </Button>
-        </LinearLayout>
+        </Button>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

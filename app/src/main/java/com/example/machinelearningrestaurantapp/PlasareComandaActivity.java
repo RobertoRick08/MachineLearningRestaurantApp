@@ -103,7 +103,7 @@ public class PlasareComandaActivity extends AppCompatActivity {
 
             }
         });
-
+        btnPlasareComanda.setEnabled(false);
         btnPlasareComanda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

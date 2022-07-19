@@ -55,7 +55,6 @@ public class FragmentCosCumparaturi extends Fragment {
         cosView = inflater.inflate(R.layout.fragment_cos_cumparaturi,container,false);
         recyclerView = (RecyclerView) cosView.findViewById(R.id.listaCumparaturi);
         btnFinalizareCoamnda = cosView.findViewById(R.id.btnFinalizeazaComanda);
-        afiseazaMap = cosView.findViewById(R.id.afiseazaMap);
 
         Bundle bundle = getArguments();
         assert bundle != null;
@@ -92,14 +91,7 @@ public class FragmentCosCumparaturi extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        afiseazaMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (String s : produsFrecventa.keySet()){
-                    Log.d("Frecventa ", s + " " + produsFrecventa.get(s).toString() + "\n");
-                }
-            }
-        });
+
         btnFinalizareCoamnda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
