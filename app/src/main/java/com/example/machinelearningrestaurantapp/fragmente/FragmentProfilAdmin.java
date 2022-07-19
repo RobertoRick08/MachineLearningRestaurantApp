@@ -21,6 +21,7 @@ import com.example.machinelearningrestaurantapp.MainActivity;
 import com.example.machinelearningrestaurantapp.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -134,7 +135,7 @@ DatabaseReference userRef, ordersRef;
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         Double sum = list.stream().mapToDouble(o -> o.getTotalComanda()).sum();
         Integer orders = list.size();
-        oredersRevenue.setText("Total incasari: " + sum);
+        oredersRevenue.setText("Total venituri: " + sum + " lei");
         ordersNumber.setText("Total nr. comenzi: " + orders);
         Map<String, List<Comanda>> result = list.stream().collect(Collectors.groupingBy(Comanda::getDate));
         Map<Float,Float> graf = new HashMap<>();
@@ -154,10 +155,6 @@ DatabaseReference userRef, ordersRef;
             barArrayList.add(new BarEntry(key,value));
         });
 
-        setBarChart();
-    }
-
-    private void setBarChart(){
         BarDataSet barDataSet = new BarDataSet(barArrayList,"");
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -167,7 +164,10 @@ DatabaseReference userRef, ordersRef;
         barChart.getDescription().setEnabled(true);
         Description description = new Description();
         description.setText("");
-        description.setTextSize(20f);
         barChart.setDescription(description);
+
+        XAxis bottomAxis = barChart.getXAxis();
+        bottomAxis.setLabelCount(graf.size());
+        bottomAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
     }
 }
