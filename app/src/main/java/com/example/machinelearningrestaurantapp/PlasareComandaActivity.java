@@ -42,7 +42,7 @@ public class PlasareComandaActivity extends AppCompatActivity {
     private HashMap<String, Integer> frecventaMap = new HashMap<>();
     private ImageView checkImage;
     private AnimatedVectorDrawable animatie;
-    private float totalComanda;
+    private double totalComanda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

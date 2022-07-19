@@ -3,10 +3,10 @@ package com.example.machinelearningrestaurantapp;
 public class Comanda {
 
     public String adresaDeLivrare, numarTelefon, date;
-    public Float totalComanda;
+    public Double totalComanda;
     public int numarProduse;
 
-    public Comanda(String adresaDeLivrare, String numarTelefon, Float totalComanda, int numarProduse, String date) {
+    public Comanda(String adresaDeLivrare, String numarTelefon, Double totalComanda, int numarProduse, String date) {
         this.adresaDeLivrare = adresaDeLivrare;
         this.numarTelefon = numarTelefon;
         this.totalComanda = totalComanda;
@@ -34,11 +34,11 @@ public class Comanda {
         this.numarTelefon = numarTelefon;
     }
 
-    public Float getTotalComanda() {
+    public Double getTotalComanda() {
         return totalComanda;
     }
 
-    public void setTotalComanda(Float totalComanda) {
+    public void setTotalComanda(Double totalComanda) {
         this.totalComanda = totalComanda;
     }
 

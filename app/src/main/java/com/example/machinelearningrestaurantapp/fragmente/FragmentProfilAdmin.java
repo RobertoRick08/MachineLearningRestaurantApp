@@ -37,6 +37,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class FragmentProfilAdmin extends Fragment {
@@ -48,8 +53,6 @@ private View fragmentView;
 private TextView ordersNumber, oredersRevenue;
 private BarChart barChart;
 private ArrayList barArrayList = new ArrayList();
-private float sum = 0;
-private int orders = 0;
 
 DatabaseReference userRef, ordersRef;
 
@@ -98,11 +101,12 @@ DatabaseReference userRef, ordersRef;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //adding the product to product list
+                list = new ArrayList<>();
                 for (DataSnapshot postSnapshot : snapshot.getChildren())
                     list.add(new Comanda(
                             postSnapshot.child("adresaDeLivrare").getValue().toString(),
                             postSnapshot.child("numarTelefon").getValue().toString(),
-                            postSnapshot.child("totalComanda").getValue(Float.class),
+                            postSnapshot.child("totalComanda").getValue(Double.class),
                             postSnapshot.child("numarProduse").getValue(Integer.class),
                             postSnapshot.child("date").getValue().toString()
                             )
@@ -117,28 +121,32 @@ DatabaseReference userRef, ordersRef;
     }
 
     private void mapOffer(){
-        list.forEach( order -> sum(order.totalComanda, order.date));
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        Double sum = list.stream().mapToDouble(o -> o.getTotalComanda()).sum();
+        Integer orders = list.size();
         oredersRevenue.setText("Total incasari: " + sum);
         ordersNumber.setText("Total nr. comenzi: " + orders);
-        barArrayList.add(new BarEntry(2f,10f));
-        barArrayList.add(new BarEntry(3f,20f));
-        barArrayList.add(new BarEntry(4f,30f));
-        barArrayList.add(new BarEntry(6f,60f));
+        Map<String, List<Comanda>> result = list.stream().collect(Collectors.groupingBy(Comanda::getDate));
+        Map<Float,Float> graf = new HashMap<>();
+        result.forEach((keyDate,ords)-> {
+            try {
+                Date date = dt.parse(keyDate);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                Float day_of_month = (float) calendar.get(Calendar.DAY_OF_MONTH);
+                Float s = (float) ords.stream().filter(o -> o.getTotalComanda() > 0).mapToDouble(o -> o.getTotalComanda()).sum();
+                graf.put(day_of_month, s);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        });
+        graf.forEach((key,value)->{
+            barArrayList.add(new BarEntry(key,value));
+        });
+
         setBarChart();
     }
 
-    private void sum(float revenue, String orderDate){
-        sum += revenue;
-        orders ++;
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date currentDate = new Date();
-        try {
-            Date date = dt.parse(orderDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-    }
     private void setBarChart(){
         BarDataSet barDataSet = new BarDataSet(barArrayList,"");
         BarData barData = new BarData(barDataSet);
