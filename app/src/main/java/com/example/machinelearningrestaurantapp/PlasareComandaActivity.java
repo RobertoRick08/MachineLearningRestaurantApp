@@ -29,7 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class PlasareComandaActivity extends AppCompatActivity {
@@ -141,8 +143,10 @@ public class PlasareComandaActivity extends AppCompatActivity {
         String adresa = adresaLivrare.getText().toString();
         String numar = numarTelefon.getText().toString();
         Log.d("Clickkk", adresa + " " + numar + " " + cosProduse.size());
-
-        Comanda comanda = new Comanda(adresa, numar, totalComanda, cosProduse.size());
+        Date date = new Date();
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        String stringdate = dt.format(date);
+        Comanda comanda = new Comanda(adresa, numar, totalComanda, cosProduse.size(), stringdate);
         FirebaseDatabase.getInstance().getReference("Comenzi")
                 .push().setValue(comanda).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

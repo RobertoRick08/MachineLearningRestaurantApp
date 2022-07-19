@@ -1,8 +1,9 @@
 package com.example.machinelearningrestaurantapp.fragmente;
 
-import android.media.Image;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,40 +11,141 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.machinelearningrestaurantapp.Comanda;
 import com.example.machinelearningrestaurantapp.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class FragmentProfilAdmin extends Fragment {
 private TextInputEditText numeAdmin, numarAdmin, emailAdmin;
-private Button btnDeconectare,btnAfisareStatistici;
+private Button btnDeconectare;
 private ImageView imagineAdmin;
-    public FragmentProfilAdmin() {
-        // Required empty public constructor
-    }
+private ArrayList<Comanda> list  = new ArrayList<>();
+private View fragmentView;
+private TextView ordersNumber, oredersRevenue;
+private BarChart barChart;
+private ArrayList barArrayList = new ArrayList();
+private float sum = 0;
+private int orders = 0;
 
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
+DatabaseReference userRef, ordersRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        numeAdmin = container.findViewById(R.id.etAdminProfilNume);
-        numarAdmin = container.findViewById((R.id.etAdminProfilNumar));
-        emailAdmin = container.findViewById(R.id.etAdminProfilEmail);
-        btnDeconectare = container.findViewById((R.id.btnAdminDelogare));
-        btnAfisareStatistici = container.findViewById(R.id.btnAdminStatistici);
 
+        fragmentView = inflater.inflate(R.layout.fragment_profil_admin, container, false);
 
+        numeAdmin = fragmentView.findViewById(R.id.etAdminProfilNume);
+        numarAdmin = fragmentView.findViewById((R.id.etAdminProfilNumar));
+        emailAdmin = fragmentView.findViewById(R.id.etAdminProfilEmail);
+        imagineAdmin = fragmentView.findViewById(R.id.imageAdminProfilUtilizator);
+        btnDeconectare = fragmentView.findViewById(R.id.btnAdminDelogare);
+        ordersNumber = fragmentView.findViewById(R.id.ordersNumber);
+        oredersRevenue = fragmentView.findViewById(R.id.ordersRevenue);
+        barChart = fragmentView.findViewById(R.id.barchart);
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Comenzi");
 
+        init();
 
-        return inflater.inflate(R.layout.fragment_profil_admin, container, false);
+        return fragmentView;
+    }
+
+    private void init(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                numeAdmin.setText(snapshot.child("nume").getValue().toString());
+                emailAdmin.setText(snapshot.child("mail").getValue().toString());
+                numarAdmin.setText(snapshot.child("numarTelefon").getValue().toString());
+                Glide.with(getActivity())
+                        .load(snapshot.child("imageProfile").getValue().toString())
+                        .diskCacheStrategy(DiskCacheStrategy.DATA)
+                        .circleCrop()
+                        .into(imagineAdmin);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        ordersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //adding the product to product list
+                for (DataSnapshot postSnapshot : snapshot.getChildren())
+                    list.add(new Comanda(
+                            postSnapshot.child("adresaDeLivrare").getValue().toString(),
+                            postSnapshot.child("numarTelefon").getValue().toString(),
+                            postSnapshot.child("totalComanda").getValue(Float.class),
+                            postSnapshot.child("numarProduse").getValue(Integer.class),
+                            postSnapshot.child("date").getValue().toString()
+                            )
+                    );
+                mapOffer();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void mapOffer(){
+        list.forEach( order -> sum(order.totalComanda, order.date));
+        oredersRevenue.setText("Total incasari: " + sum);
+        ordersNumber.setText("Total nr. comenzi: " + orders);
+        barArrayList.add(new BarEntry(2f,10f));
+        barArrayList.add(new BarEntry(3f,20f));
+        barArrayList.add(new BarEntry(4f,30f));
+        barArrayList.add(new BarEntry(6f,60f));
+        setBarChart();
+    }
+
+    private void sum(float revenue, String orderDate){
+        sum += revenue;
+        orders ++;
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        try {
+            Date date = dt.parse(orderDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void setBarChart(){
+        BarDataSet barDataSet = new BarDataSet(barArrayList,"");
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+        barChart.getDescription().setEnabled(true);
     }
 }

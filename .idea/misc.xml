@@ -42,6 +42,9 @@
         <entry key="..\:/Users/X/AndroidStudioProjects/MachineLearningRestaurantApp/app/src/main/res/xml/border.xml" value="0.20416666666666666" />
         <entry key="..\:/source/MachineLearningRestaurantApp/app/src/main/res/drawable/userfinal.xml" value="0.1" />
         <entry key="..\:/source/MachineLearningRestaurantApp/app/src/main/res/layout/fragment_profil_utilizator.xml" value="0.19655521783181357" />
+        <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/layout/fragment_profil_admin.xml" value="0.2508270263671875" />
+        <entry key="app/src/main/res/layout/fragment_profil_utilizator.xml" value="0.26055251411769703" />
       </map>
     </option>
   </component>
