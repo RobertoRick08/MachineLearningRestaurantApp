@@ -11,6 +11,7 @@ import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -56,6 +57,7 @@ public class PlasareComandaActivity extends AppCompatActivity {
         numarTelefon = findViewById(R.id.etNumarTelefon);
         btnPlasareComanda = findViewById(R.id.btnPlaseazaComanda);
         checkImage = findViewById(R.id.imgCheck);
+
         frecventaMap = (HashMap<String, Integer>) intent.getSerializableExtra("map");
         adresaLivrare.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,6 +111,21 @@ public class PlasareComandaActivity extends AppCompatActivity {
         btnPlasareComanda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!TextUtils.isDigitsOnly(numarTelefon.getText().toString())) {
+                    numarTelefon.setError("Ati introdus din greseala si caractere!");
+                    numarTelefon.requestFocus();
+                    return;
+                }
+                if (adresaLivrare.getText().toString().isEmpty()) {
+                    adresaLivrare.setError("Introduceti adresa de livrare");
+                    adresaLivrare.requestFocus();
+                    return;
+                }
+                if (adresaLivrare.getText().toString().length() < 10) {
+                    adresaLivrare.setError("Adresa trebuie sa contina minim 10 caractere");
+                    adresaLivrare.requestFocus();
+                    return;
+                }
                 inregistreazaRecomandate(frecventaMap);
                 inregistreazaComanda();
             }
